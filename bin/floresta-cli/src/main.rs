@@ -198,8 +198,13 @@ pub enum Methods {
     )]
     GetBlockCount,
 
-    /// Returns the proof that one or more transactions were included in a block
-    #[command(name = "gettxoutproof")]
+    #[doc = include_str!("../../../doc/rpc/gettxoutproof.md")]
+    #[command(
+        name = "gettxoutproof",
+        about = "Returns the Merkle proof that one or more transactions were included in a block.",
+        long_about = Some(include_str!("../../../doc/rpc/gettxoutproof.md")),
+        disable_help_subcommand = true
+    )]
     GetTxOutProof {
         /// The transaction IDs to prove
         #[arg(required = true, value_parser = crate::parsers::parse_json_array::<Txid>)]
@@ -210,8 +215,13 @@ pub enum Methods {
         blockhash: Option<BlockHash>,
     },
 
-    /// Returns the transaction, assuming it is cached by our watch only wallet
-    #[command(name = "gettransaction")]
+    #[doc = include_str!("../../../doc/rpc/gettransaction.md")]
+    #[command(
+        name = "gettransaction",
+        about = "Returns a transaction cached by the watch-only wallet.",
+        long_about = Some(include_str!("../../../doc/rpc/gettransaction.md")),
+        disable_help_subcommand = true
+    )]
     GetTransaction { txid: Txid, verbose: Option<bool> },
 
     #[doc = include_str!("../../../doc/rpc/rescanblockchain.md")]
@@ -253,8 +263,13 @@ pub enum Methods {
     #[command(name = "sendrawtransaction")]
     SendRawTransaction { tx: String },
 
-    /// Returns the block header for the given block hash
-    #[command(name = "getblockheader")]
+    #[doc = include_str!("../../../doc/rpc/getblockheader.md")]
+    #[command(
+        name = "getblockheader",
+        about = "Returns the block header for the given block hash.",
+        long_about = Some(include_str!("../../../doc/rpc/getblockheader.md")),
+        disable_help_subcommand = true
+    )]
     GetBlockHeader { hash: BlockHash },
 
     /// Loads a new descriptor to the watch only wallet
